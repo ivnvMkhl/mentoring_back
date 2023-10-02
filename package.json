@@ -1,0 +1,24 @@
+{
+    "name": "mentoring_back",
+    "version": "0.1",
+    "description": "mentoring app",
+    "main": "src/index.js",
+    "type": "module",
+    "scripts": {
+        "build": "tsc -p tsconfig.json",
+        "start": "npx nodemon src/index.js"
+    },
+    "author": "iMkhl mkhl.ivnv@gmail.com",
+    "license": "MIT",
+    "dependencies": {
+        "@fastify/swagger": "^8.10.1",
+        "@fastify/swagger-ui": "1.9.3",
+        "dotenv": "16.3.1",
+        "fastify": "4.22.2"
+    },
+    "devDependencies": {
+        "@types/node": "20.6.0",
+        "typescript": "5.2.2",
+        "nodemon": "3.0.1"
+    }
+}
