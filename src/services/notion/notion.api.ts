@@ -22,7 +22,14 @@ class NotionApi {
         const url = `${this.baseApi}/databases/${tableId}/query`;
         const fetchInit: RequestInit = { method: 'POST', headers: this.headers, body: payload };
 
-        return await fetch(url, fetchInit).then((response) => response.json());
+        return await fetch(url, fetchInit).then((response) => {
+            switch (response.status) {
+                case 200:
+                    return response.json();
+                default:
+                    throw new Error(`failed to fetch database query: ${response.status} ${response.statusText}`);
+            }
+        });
     }
 }
 
