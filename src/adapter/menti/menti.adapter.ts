@@ -14,9 +14,15 @@ export const mentiAdapter = {
     },
 
     async loadMentiList() {
-        mentiDomain.mentiListQuery = await notionApi.databaseQuery<MentiListQueryKeys>(
-            envService.variables.MENTI_LIST_TABLE_ID,
-        );
+        try {
+            mentiDomain.mentiListQuery = await notionApi.databaseQuery<MentiListQueryKeys>(
+                envService.variables.MENTI_LIST_TABLE_ID,
+            );
+        } catch (error) {
+            if (error instanceof Error) {
+                throw new Error(error.message);
+            }
+        }
     },
 
     async getMentiList(refresh?: boolean) {

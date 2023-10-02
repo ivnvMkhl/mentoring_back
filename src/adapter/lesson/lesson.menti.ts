@@ -18,9 +18,10 @@ export const lessonAdapter = {
             lessonDomain.lessonListQuery = await notionApi.databaseQuery<LessonListQueryKeys>(
                 envService.variables.METORING_TABLE_ID,
             );
-        } catch (err) {
-            console.error('error load to fetch lessonList');
-            throw new Error('error load to fetch lessonList');
+        } catch (error) {
+            if (error instanceof Error) {
+                throw new Error(error.message);
+            }
         }
     },
 
