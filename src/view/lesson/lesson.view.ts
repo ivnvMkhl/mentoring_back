@@ -3,6 +3,8 @@ import { lessonAdapter } from '../../adapter/lesson/lesson.menti.js';
 
 export const getLessons: RouteHandlerMethod = async (request, reply) => {
     try {
+        reply.header('Access-Control-Allow-Origin', '*');
+        reply.header('Access-Control-Allow-Methods', 'GET');
         reply.status(200);
         return await lessonAdapter.getLessonList(true);
     } catch (error: Error | unknown) {
