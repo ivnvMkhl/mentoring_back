@@ -10,15 +10,19 @@
     },
     "author": "iMkhl mkhl.ivnv@gmail.com",
     "license": "MIT",
+    "engines": {
+        "node": "16.x"
+    },
     "dependencies": {
         "@fastify/swagger": "^8.10.1",
         "@fastify/swagger-ui": "1.9.3",
         "dotenv": "16.3.1",
-        "fastify": "4.22.2"
+        "fastify": "4.22.2",
+        "node-fetch": "3.3.2"
     },
     "devDependencies": {
         "@types/node": "20.6.0",
-        "typescript": "5.2.2",
-        "nodemon": "3.0.1"
+        "nodemon": "3.0.1",
+        "typescript": "5.2.2"
     }
 }
