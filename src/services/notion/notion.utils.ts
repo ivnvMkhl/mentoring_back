@@ -12,18 +12,33 @@ export const mapQueryToPlainRecord = <Record = any[]>(query: DatabaseQuery, incl
                         ? { ...acc, relations: (value[value.type] as RelationProperty).map((relation) => relation.id) }
                         : acc;
                 case PropertyType.unique_id:
-                    return { ...acc, [key]: value[value.type].number };
+                    if (value[value.type]) {
+                        return { ...acc, [key]: value[value.type].number };
+                    }
+                    return { ...acc, [key]: value[value.type] };
                 case PropertyType.select:
-                    return { ...acc, [key]: value[value.type].name };
+                    if (value[value.type]) {
+                        return { ...acc, [key]: value[value.type].name };
+                    }
+                    return { ...acc, [key]: value[value.type] };
                 case PropertyType.multi_select:
-                    return { ...acc, [key]: value[value.type].map((val: any) => val.name) };
+                    if (value[value.type]) {
+                        return { ...acc, [key]: value[value.type].map((val: any) => val.name) };
+                    }
+                    return { ...acc, [key]: value[value.type] };
                 case PropertyType.title: {
-                    const textValues = value[value.type].map((textValue: any) => textValue.plain_text);
-                    return { ...acc, [key]: textValues.length <= 1 ? textValues[0] : textValues };
+                    if (value[value.type]) {
+                        const textValues = value[value.type].map((textValue: any) => textValue.plain_text);
+                        return { ...acc, [key]: textValues.length <= 1 ? textValues[0] : textValues };
+                    }
+                    return { ...acc, [key]: value[value.type] };
                 }
                 case PropertyType.rich_text: {
-                    const textValues = value[value.type].map((textValue: any) => textValue.plain_text);
-                    return { ...acc, [key]: textValues.length <= 1 ? textValues[0] : textValues };
+                    if (value[value.type]) {
+                        const textValues = value[value.type].map((textValue: any) => textValue.plain_text);
+                        return { ...acc, [key]: textValues.length <= 1 ? textValues[0] : textValues };
+                    }
+                    return { ...acc, [key]: value[value.type] };
                 }
                 case PropertyType.email:
                     return { ...acc, [key]: value[value.type] };
@@ -32,7 +47,10 @@ export const mapQueryToPlainRecord = <Record = any[]>(query: DatabaseQuery, incl
                 case PropertyType.number:
                     return { ...acc, [key]: value[value.type] };
                 case PropertyType.date:
-                    return { ...acc, [key]: value[value.type].start };
+                    if (value[value.type]) {
+                        return { ...acc, [key]: value[value.type].start };
+                    }
+                    return { ...acc, [key]: value[value.type] };
                 default:
                     return acc;
             }

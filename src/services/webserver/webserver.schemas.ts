@@ -50,6 +50,20 @@ const schemas = {
             },
         },
     },
+    userInfo: {
+        $id: SchemaID.USER_INFO,
+        type: 'object',
+        properties: {
+            id: { type: 'string' },
+            created_time: { type: 'string' },
+            last_edited_time: { type: 'string' },
+            registration_at: { type: 'string' },
+            user_name: { type: 'string' },
+            role: { type: 'string' },
+            full_name: { type: 'string' },
+            email: { type: 'string' },
+        },
+    },
 } as const;
 
 export const initSchemas = (server: FastifyInstance) => {

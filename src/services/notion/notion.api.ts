@@ -23,7 +23,7 @@ class NotionApi {
 
     async databaseQuery<Keys>(tableId: string, payload?: any): Promise<DatabaseQuery<Keys>> {
         const url = `${this.baseApi}/databases/${tableId}/query`;
-        const fetchInit: RequestInit = { method: 'POST', headers: this.headers, body: payload };
+        const fetchInit: RequestInit = { method: 'POST', headers: this.headers, body: JSON.stringify(payload) };
 
         return await this.fetch(url, fetchInit).then((response) => {
             switch (response.status) {
