@@ -2,6 +2,7 @@ import { FastifyInstance, RouteOptions } from 'fastify';
 import { getMentiList } from '../../view/meti/menti.view.js';
 import { getLessons } from '../../view/lesson/lesson.view.js';
 import { SchemaID } from './webserver.interfaces.js';
+import { getUserList } from '../../view/user/user.vew.js';
 
 const RESPONSE_ERROR_DESCRIPTION = 'Error response';
 const RESPONSE_SUCCESFUL_DESCRIPTION = 'Succesful response';
@@ -32,6 +33,11 @@ const routes: Record<string, RouteOptions> = {
             },
         },
         handler: getMentiList,
+    },
+    userListRoute: {
+        method: 'GET',
+        url: '/user',
+        handler: getUserList,
     },
 };
 

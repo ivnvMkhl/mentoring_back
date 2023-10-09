@@ -9,15 +9,17 @@ import {
 } from '../../services/notion/notion.interfaces.js';
 
 export enum UserRecordKeys {
+    EMAIL = 'email',
     USER_NAME = 'user_name',
     ROLE = 'role',
     FULL_NAME = 'full_name',
-    REGISTARATION_AT = 'registartion_at',
+    REGISTARATION_AT = 'registration_at',
     PASSWORD = 'password',
 }
 
 export type UserListQueryKeys = {
-    [UserRecordKeys.USER_NAME]: { type: PropertyType.title; [PropertyType.title]: TitleProperty };
+    [UserRecordKeys.EMAIL]: { type: PropertyType.title; [PropertyType.title]: TitleProperty };
+    [UserRecordKeys.USER_NAME]: { type: PropertyType.rich_text; [PropertyType.rich_text]: RichTextProperty };
     [UserRecordKeys.ROLE]: { type: PropertyType.select; [PropertyType.select]: SelectProperty };
     [UserRecordKeys.FULL_NAME]: { type: PropertyType.rich_text; [PropertyType.rich_text]: RichTextProperty };
     [UserRecordKeys.REGISTARATION_AT]: { type: PropertyType.date; [PropertyType.date]: DateProperty };
