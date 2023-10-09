@@ -1,8 +1,8 @@
-import { UserList, UserListQuery } from './user.interfaces.js';
+import { UserListQuery, UserRecord } from './user.interfaces.js';
 
 class UserDomain {
-    userListQuery?: UserListQuery;
-    userList?: UserList;
+    userQuery?: UserListQuery;
+    user?: UserRecord;
 }
 
 const userDomain = new UserDomain();
