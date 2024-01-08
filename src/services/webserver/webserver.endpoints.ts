@@ -3,6 +3,7 @@ import { getMentiList } from '../../view/meti/menti.view.js';
 import { getLessons } from '../../view/lesson/lesson.view.js';
 import { SchemaID, SwaggerTag } from './webserver.interfaces.js';
 import { getUser } from '../../view/user/user.vew.js';
+import { getExercises } from '../../view/exercise/exercise.view.js';
 
 const RESPONSE_ERROR_DESCRIPTION = 'Error response';
 const RESPONSE_SUCCESFUL_DESCRIPTION = 'Succesful response';
@@ -33,6 +34,19 @@ const routes: Record<string, RouteOptions> = {
             },
         },
         handler: getMentiList,
+    },
+    exerciseListRoute: {
+        method: 'GET',
+        url: '/exercise',
+        schema: {
+            description: 'list of exercise',
+            tags: [SwaggerTag.EXERCISE],
+            response: {
+                200: { $ref: `${SchemaID.EXERCISES}#`, description: RESPONSE_SUCCESFUL_DESCRIPTION },
+                400: { $ref: `${SchemaID.RESPONSE_ERROR}#`, description: RESPONSE_ERROR_DESCRIPTION },
+            },
+        },
+        handler: getExercises,
     },
     auth: {
         method: 'POST',
