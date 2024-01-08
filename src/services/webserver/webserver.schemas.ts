@@ -50,6 +50,24 @@ const schemas = {
             },
         },
     },
+    exerciseList: {
+        $id: SchemaID.EXERCISES,
+        type: 'array',
+        items: {
+            type: 'object',
+            required: ['id', 'created_time', 'last_edited_time'],
+            properties: {
+                id: { type: 'string' },
+                created_time: { type: 'string' },
+                additional: { type: 'string' },
+                code: { type: 'string' },
+                content: { type: 'string' },
+                difficulty: { type: 'string' },
+                topic: { type: 'string' },
+                name: { type: 'string' },
+            },
+        },
+    },
     userInfo: {
         $id: SchemaID.USER_INFO,
         type: 'object',
