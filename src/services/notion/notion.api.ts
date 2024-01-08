@@ -18,7 +18,6 @@ class NotionApi {
             Authorization: this.tokenPrefix + this.token,
             'Content-Type': 'application/json',
             'Notion-Version': '2022-06-28',
-            Accept: '*/*',
         };
     }
 

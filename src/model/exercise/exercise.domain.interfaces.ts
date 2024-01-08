@@ -13,7 +13,6 @@ export type Exercises = Pick<BaseQueryRecord, 'created_time' | 'last_edited_time
 
 export type ExercisesQueryKeys = {
     name: { type: PropertyType.relation; [PropertyType.relation]: RelationProperty };
-    ID: { type: PropertyType.unique_id; [PropertyType.unique_id]: UniqueIdProperty };
     difficulty: { type: PropertyType.select; [PropertyType.select]: SelectProperty };
     topic: { type: PropertyType.select; [PropertyType.select]: SelectProperty };
     content: { type: PropertyType.rich_text; [PropertyType.rich_text]: RichTextProperty };
